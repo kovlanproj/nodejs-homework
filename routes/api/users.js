@@ -2,13 +2,14 @@ const express = require('express');
 
 const {controllersWrapper, validation} = require('../../middlewares');
 const {joiRegisterSchema,
-    //  joiLoginSchema
+     joiLoginSchema
 } = require('../../models/user')
 const {auth: controllers} = require('../../controllers')
 
 const router = express.Router();
 
 router.post('/register', validation(joiRegisterSchema), controllersWrapper(controllers.register))
+router.post('/login', validation(joiLoginSchema), controllersWrapper(controllers.login))
 // router.get("/", controllersWrapper(controllers.getListContacts));
 // router.get("/:contactId", controllersWrapper(controllers.getContactById));
 // router.post("/", validation(joiContactSchema), controllersWrapper(controllers.addContact));
