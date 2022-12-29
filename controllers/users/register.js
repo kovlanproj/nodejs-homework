@@ -18,7 +18,8 @@ res.status(201).json({
     data: {
         user: {
             name: result.name, 
-            email: result.email
+            email: result.email,
+            subscription: result.subscription
         },
         
     }

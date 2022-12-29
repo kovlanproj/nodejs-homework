@@ -7,7 +7,7 @@ const updateFavoriteField = async (req, res, next) => {
     const {favorite} = req.body;
     const result = await Contact.findByIdAndUpdate(contactId, {favorite}, {new: true});
     if (!result) {
-        throw new NotFound(`Product with id=${contactId} not found`)
+        throw new NotFound(`Contact with id=${contactId} not found`)
     }
     res.json({
               status: 'succcess',

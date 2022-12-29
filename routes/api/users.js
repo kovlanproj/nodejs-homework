@@ -2,7 +2,8 @@ const express = require('express');
 
 const {controllersWrapper, validation, auth} = require('../../middlewares');
 const {joiRegisterSchema,
-     joiLoginSchema
+     joiLoginSchema,
+     joiSubscriptionSchema
 } = require('../../models/user')
 const {user: controllers} = require('../../controllers');
 
@@ -12,5 +13,6 @@ router.post('/register', validation(joiRegisterSchema), controllersWrapper(contr
 router.post('/login', validation(joiLoginSchema), controllersWrapper(controllers.login))
 router.post('/logout', auth, controllersWrapper(controllers.logout))
 router.get('/current', auth, controllersWrapper(controllers.getCurrent));
+router.patch('/', auth, validation(joiSubscriptionSchema), controllersWrapper(controllers.updateSubscription))
 
 module.exports = router;
