@@ -17,7 +17,7 @@ const passCompare = bcrypt.compareSync(password, user.password);
 if (!passCompare) {
     throw new Unauthorized("Email or password is wrong");
 }
-
+if (!user.verify){throw new Unauthorized("You have to verify your email");}
 const payload = {
     id: user._id
 }
